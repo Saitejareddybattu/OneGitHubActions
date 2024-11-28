@@ -18,4 +18,9 @@ jobs:
       run: |
         echo 'print("Hello, World!")' > hello_world.py
         python hello_world.py
+
+
+    - name: list of files
+      run: |
+        ls -lrt
  

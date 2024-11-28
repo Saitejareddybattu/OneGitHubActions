@@ -1,0 +1,14 @@
+name: second workflow
+on: push
+
+jobs:
+  hello_world-2_job:
+    runs on: ubuntu-latest
+    steps:
+    - name: checkout code
+      uses: actions/checkout@v4
+
+    - name: python setup
+      uses: 
+
+
