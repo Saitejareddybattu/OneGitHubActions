@@ -16,9 +16,9 @@ jobs:
  
     - name: Run Hello World script
       run: |
-        echo 'print("Hello, World!")' > hello_world.py
+        echo 'print("Hello, World!")'
         python hello_world.py
-
+        
 
     - name: list of files
       run: |
