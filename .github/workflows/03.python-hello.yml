@@ -26,6 +26,6 @@ jobs:
 
     - name: here data
       run: |
-        echo 'print("hello world")'>>hello_world.py
+        echo 'print("hello world") >>hello_world.py'
         python hello_world.py
  
