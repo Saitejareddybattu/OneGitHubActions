@@ -1,0 +1,42 @@
+name: Java Maven Build and Run
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    # Checkout the code
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    # Set up JDK 11 (or other versions if needed)
+    - name: Set up JDK
+      uses: actions/setup-java@v3
+      with:
+        java-version: '11'
+        distribution: 'temurin'
+
+    # Cache Maven dependencies
+    - name: Cache Maven dependencies
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2
+        key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
+
+    # Run Maven build
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    # Run the Java application
+    - name: Run Hello World
+      run: java -cp target/hello-world-1.0-SNAPSHOT.jar com.example.HelloWorld
